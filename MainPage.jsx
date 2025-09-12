@@ -5,23 +5,18 @@ import {
   Text,
   TouchableOpacity,
   StyleSheet,
-  Image,
   SafeAreaView,
+  Image,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import LottieView from "lottie-react-native";
 
-export default function MainPage() {
+export default function MainPage({ navigation }) {
   return (
     <SafeAreaView style={styles.container}>
       {/* Top Bar */}
       <View style={styles.topBar}>
-        <Image
-          source={{
-            uri: "https://i.pravatar.cc/100?img=12", // Replace with real user image
-          }}
-          style={styles.profileImage}
-        />
-        <Text style={styles.username}>Logesh</Text>
+        <Text style={styles.username}>Praveen</Text>
         <Ionicons name="notifications-outline" size={24} color="#fff" />
       </View>
 
@@ -30,23 +25,35 @@ export default function MainPage() {
         {/* Row 1 */}
         <View style={styles.row}>
           <View style={styles.card}>
-            <Image
-              source={{ uri: "https://cdn-icons-png.flaticon.com/512/697/697932.png" }}
-              style={styles.cardImage}
+            <LottieView
+              source={{
+                uri: "https://lottie.host/b3e3e8b1-24a3-4572-b356-393ad54842fc/p2wxYrOO3Y.json",
+              }}
+              autoPlay
+              loop
+              style={styles.lottie}
             />
-            <TouchableOpacity style={styles.cardButton}>
+            <TouchableOpacity
+              style={styles.cardButton}
+              onPress={() => navigation.navigate("TakeCharge")}
+            >
               <Text style={styles.cardButtonText}>INCHARGE</Text>
             </TouchableOpacity>
           </View>
 
           <View style={styles.card}>
-            <Image
+            <LottieView
               source={{
-                uri: "https://cdn-icons-png.flaticon.com/512/744/744465.png",
+                uri: "https://lottie.host/9135beef-b037-428f-a118-9c4e186895ae/KDve3X7IXO.json",
               }}
-              style={styles.cardImage}
+              autoPlay
+              loop
+              style={styles.lottie}
             />
-            <TouchableOpacity style={styles.cardButton}>
+            <TouchableOpacity
+              style={styles.cardButton}
+              onPress={() => navigation.navigate("ModifyPage")}
+            >
               <Text style={styles.cardButtonText}>MODIFY</Text>
             </TouchableOpacity>
           </View>
@@ -55,11 +62,13 @@ export default function MainPage() {
         {/* Row 2 */}
         <View style={styles.row}>
           <View style={styles.card}>
-            <Image
+            <LottieView
               source={{
-                uri: "https://cdn-icons-png.flaticon.com/512/2088/2088617.png",
+                uri: "https://lottie.host/e80880dd-6630-455e-bf27-2bbede84c846/9MO0MXNDwd.json",
               }}
-              style={styles.cardImage}
+              autoPlay
+              loop
+              style={styles.lottie}
             />
             <TouchableOpacity style={styles.cardButton}>
               <Text style={styles.cardButtonText}>PAST ACTIVITIES</Text>
@@ -67,15 +76,31 @@ export default function MainPage() {
           </View>
 
           <View style={styles.card}>
-            <Image
+            <LottieView
               source={{
-                uri: "https://cdn-icons-png.flaticon.com/512/709/709496.png",
+                uri: "https://lottie.host/92f1d3a3-8aaf-4e3c-ba42-9e7b8bcfd83f/yffTXm8PSn.json",
               }}
-              style={styles.cardImage}
+              autoPlay
+              loop
+              style={styles.lottie}
             />
             <TouchableOpacity style={styles.cardButton}>
               <Text style={styles.cardButtonText}>FINE CHARGED</Text>
             </TouchableOpacity>
+          </View>
+        </View>
+
+        {/* Info Box */}
+        <View style={styles.infoBox}>
+          <Image
+            source={{
+              uri: "https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
+            }}
+            style={styles.profileImage}
+          />
+          <View style={styles.infoText}>
+            <Text style={styles.infoTitle}>TTE ID: 123456</Text>
+            <Text style={styles.infoSubtitle}>Username: Praveen</Text>
           </View>
         </View>
       </View>
@@ -94,10 +119,13 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 20,
     justifyContent: "space-between",
   },
-  profileImage: { width: 40, height: 40, borderRadius: 20, marginRight: 10 },
-  username: { color: "#fff", fontSize: 18, fontWeight: "bold", flex: 1 },
+  username: { color: "#fff", fontSize: 18, fontWeight: "bold" },
   grid: { flex: 1, padding: 20 },
-  row: { flexDirection: "row", justifyContent: "space-between", marginBottom: 25 },
+  row: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginBottom: 25,
+  },
   card: {
     backgroundColor: "#f5f5f5",
     borderRadius: 20,
@@ -106,13 +134,31 @@ const styles = StyleSheet.create({
     width: "45%",
     elevation: 4,
   },
-  cardImage: { width: 90, height: 90, borderRadius: 15, marginBottom: 10 },
+  lottie: { width: 90, height: 90, marginBottom: 10 },
   cardButton: {
     backgroundColor: "#1E3A8A",
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    borderRadius: 25,
+    paddingVertical: 8,
+    paddingHorizontal: 16,
+    borderRadius: 20,
     marginTop: 5,
   },
-  cardButtonText: { color: "#fff", fontWeight: "bold", textAlign: "center" },
+  cardButtonText: {
+    color: "#fff",
+    fontWeight: "bold",
+    fontSize: 12,
+    textAlign: "center",
+  },
+  infoBox: {
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#f0f4ff",
+    borderRadius: 15,
+    padding: 15,
+    marginTop: 20,
+    elevation: 3,
+  },
+  profileImage: { width: 50, height: 50, borderRadius: 25, marginRight: 15 },
+  infoText: { flexDirection: "column" },
+  infoTitle: { fontSize: 16, fontWeight: "bold", color: "#1E3A8A" },
+  infoSubtitle: { fontSize: 14, color: "#333" },
 });
