@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "783884531832",
+    "project_id": "ainote2-f9f0a",
+    "storage_bucket": "ainote2-f9f0a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:783884531832:android:38cec47cf9766dee65158d",
+        "android_client_info": {
+          "package_name": "com.praveen.myapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "783884531832-2085r3uk4c7nv091ei1lu4n4vaj4673a.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.praveen.myapp",
+            "certificate_hash": "3f8127d16fb41666bc7bc261b14d36bb71db5ee3"
+          }
+        },
+        {
+          "client_id": "783884531832-nugo3sq60dp32mok05ijtdjbnfml31lh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDVTH-NQfJ2df47vx6TfQ03kVsO2jhhgGI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "783884531832-nugo3sq60dp32mok05ijtdjbnfml31lh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
