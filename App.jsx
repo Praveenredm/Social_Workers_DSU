@@ -15,6 +15,13 @@ import TakeCharge from "./TakeCharge";
 import ModifyPage from "./ModifyPage";
 import Chat from "./Chat";
 import Compartment from "./Compartment"; 
+import General from "./General";
+import Sleeper from "./Sleeper";
+import ThreeTierAC from "./ThreeTierAC";
+import TwoTier from "./TwoTier";
+import OneTier from "./OneTier";
+
+
 
 // Placeholder screens for bottom tabs
 function Complaint() {
@@ -79,6 +86,11 @@ export default function App() {
         <Stack.Screen name="ModifyPage" component={ModifyPage} />
         <Stack.Screen name="Chat" component={Chat} />
         <Stack.Screen name="Compartment" component={Compartment} />
+        <Stack.Screen name="General" component={General} />
+        <Stack.Screen name="Sleeper" component={Sleeper} />
+        <Stack.Screen name="ThreeTierAC" component={ThreeTierAC} />
+        <Stack.Screen name="TwoTier" component={TwoTier} />
+        <Stack.Screen name="OneTier" component={OneTier} />
       </Stack.Navigator>
     </NavigationContainer>
   );

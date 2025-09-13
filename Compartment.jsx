@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import {
   View,
   Text,
-  TextInput,
   TouchableOpacity,
   StyleSheet,
 } from "react-native";
@@ -10,21 +9,16 @@ import { Ionicons } from "@expo/vector-icons";
 
 export default function Compartment({ navigation }) {
   const [totalCompartments, setTotalCompartments] = useState(14);
-  const [general, setGeneral] = useState("");
-  const [sleeper, setSleeper] = useState("");
-  const [tier3, setTier3] = useState("");
-  const [tier2, setTier2] = useState("");
-  const [tier1, setTier1] = useState("");
+  const [general, setGeneral] = useState(0);
+  const [sleeper, setSleeper] = useState(0);
+  const [tier3, setTier3] = useState(0);
+  const [tier2, setTier2] = useState(0);
+  const [tier1, setTier1] = useState(0);
 
-  // Functions to handle increment and decrement
-  const incrementCompartments = () => {
-    setTotalCompartments(totalCompartments + 1);
-  };
-
-  const decrementCompartments = () => {
-    if (totalCompartments > 0) {
-      setTotalCompartments(totalCompartments - 1);
-    }
+  // Reusable increment/decrement
+  const increment = (setter, value) => setter(value + 1);
+  const decrement = (setter, value) => {
+    if (value > 0) setter(value - 1);
   };
 
   return (
@@ -41,62 +35,119 @@ export default function Compartment({ navigation }) {
       <Text style={styles.heading}>Compartment</Text>
       <Text style={styles.subHeading}>Details</Text>
 
-      {/* Number Input with Up/Down */}
+      {/* Total Compartments */}
       <View style={styles.numberRow}>
-        <Text style={styles.label}>Enter Total no. of compartments</Text>
+        <Text style={styles.label}>Total Compartments</Text>
         <View style={styles.numberBox}>
           <Text style={styles.numberText}>{totalCompartments}</Text>
           <View style={styles.arrowContainer}>
-            <TouchableOpacity onPress={incrementCompartments}>
+            <TouchableOpacity
+              onPress={() => increment(setTotalCompartments, totalCompartments)}
+            >
               <Ionicons name="chevron-up" size={20} color="#2C4A7A" />
             </TouchableOpacity>
-            <TouchableOpacity onPress={decrementCompartments}>
+            <TouchableOpacity
+              onPress={() => decrement(setTotalCompartments, totalCompartments)}
+            >
               <Ionicons name="chevron-down" size={20} color="#2C4A7A" />
             </TouchableOpacity>
           </View>
         </View>
       </View>
 
-      {/* Input Fields */}
-      <TextInput
-        placeholder="Enter Total no. of General"
-        style={styles.inputBox}
-        keyboardType="numeric"
-        value={general}
-        onChangeText={setGeneral}
-      />
-      <TextInput
-        placeholder="Enter Total no. of Sleeper"
-        style={styles.inputBox}
-        keyboardType="numeric"
-        value={sleeper}
-        onChangeText={setSleeper}
-      />
-      <TextInput
-        placeholder="Enter Total no. of 3-tier AC"
-        style={styles.inputBox}
-        keyboardType="numeric"
-        value={tier3}
-        onChangeText={setTier3}
-      />
-      <TextInput
-        placeholder="Enter Total no. of 2-Tier"
-        style={styles.inputBox}
-        keyboardType="numeric"
-        value={tier2}
-        onChangeText={setTier2}
-      />
-      <TextInput
-        placeholder="Enter Total no. of 1-Tier"
-        style={styles.inputBox}
-        keyboardType="numeric"
-        value={tier1}
-        onChangeText={setTier1}
-      />
+      {/* General */}
+      <TouchableOpacity
+        style={styles.optionRow}
+        onPress={() => navigation.navigate("General")}
+      >
+        <Text style={styles.label}>General</Text>
+        <View style={styles.numberBox}>
+          <Text style={styles.numberText}>{general}</Text>
+          <View style={styles.arrowContainer}>
+            <TouchableOpacity onPress={() => increment(setGeneral, general)}>
+              <Ionicons name="chevron-up" size={20} color="#2C4A7A" />
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => decrement(setGeneral, general)}>
+              <Ionicons name="chevron-down" size={20} color="#2C4A7A" />
+            </TouchableOpacity>
+          </View>
+        </View>
+      </TouchableOpacity>
 
-      {/* View Button */}
-      <TouchableOpacity style={styles.viewButton}>
-        <Text style={styles.viewText}>VIEW</Text>
+      {/* Sleeper */}
+      <TouchableOpacity
+        style={styles.optionRow}
+        onPress={() => navigation.navigate("Sleeper")}
+      >
+        <Text style={styles.label}>Sleeper</Text>
+        <View style={styles.numberBox}>
+          <Text style={styles.numberText}>{sleeper}</Text>
+          <View style={styles.arrowContainer}>
+            <TouchableOpacity onPress={() => increment(setSleeper, sleeper)}>
+              <Ionicons name="chevron-up" size={20} color="#2C4A7A" />
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => decrement(setSleeper, sleeper)}>
+              <Ionicons name="chevron-down" size={20} color="#2C4A7A" />
+            </TouchableOpacity>
+          </View>
+        </View>
+      </TouchableOpacity>
+
+      {/* 3-Tier AC */}
+      <TouchableOpacity
+        style={styles.optionRow}
+        onPress={() => navigation.navigate("ThreeTierAC")}
+      >
+        <Text style={styles.label}>3-Tier AC</Text>
+        <View style={styles.numberBox}>
+          <Text style={styles.numberText}>{tier3}</Text>
+          <View style={styles.arrowContainer}>
+            <TouchableOpacity onPress={() => increment(setTier3, tier3)}>
+              <Ionicons name="chevron-up" size={20} color="#2C4A7A" />
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => decrement(setTier3, tier3)}>
+              <Ionicons name="chevron-down" size={20} color="#2C4A7A" />
+            </TouchableOpacity>
+          </View>
+        </View>
+      </TouchableOpacity>
+
+      {/* 2-Tier */}
+      <TouchableOpacity
+        style={styles.optionRow}
+        onPress={() => navigation.navigate("TwoTier")}
+      >
+        <Text style={styles.label}>2-Tier</Text>
+        <View style={styles.numberBox}>
+          <Text style={styles.numberText}>{tier2}</Text>
+          <View style={styles.arrowContainer}>
+            <TouchableOpacity onPress={() => increment(setTier2, tier2)}>
+              <Ionicons name="chevron-up" size={20} color="#2C4A7A" />
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => decrement(setTier2, tier2)}>
+              <Ionicons name="chevron-down" size={20} color="#2C4A7A" />
+            </TouchableOpacity>
+          </View>
+        </View>
+      </TouchableOpacity>
+
+      {/* 1-Tier */}
+      <TouchableOpacity
+        style={styles.optionRow}
+        onPress={() => navigation.navigate("OneTier")}
+      >
+        <Text style={styles.label}>1-Tier</Text>
+        <View style={styles.numberBox}>
+          <Text style={styles.numberText}>{tier1}</Text>
+          <View style={styles.arrowContainer}>
+            <TouchableOpacity onPress={() => increment(setTier1, tier1)}>
+              <Ionicons name="chevron-up" size={20} color="#2C4A7A" />
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => decrement(setTier1, tier1)}>
+              <Ionicons name="chevron-down" size={20} color="#2C4A7A" />
+            </TouchableOpacity>
+          </View>
+        </View>
       </TouchableOpacity>
 
       {/* Bottom Navigation */}
@@ -148,31 +199,28 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginBottom: 20,
   },
+  optionRow: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginBottom: 15,
+    paddingVertical: 10,
+    paddingHorizontal: 12,
+    backgroundColor: "#F2F2F2",
+    borderRadius: 10,
+  },
   label: { fontSize: 16, fontWeight: "500" },
   numberBox: {
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: "#F2F2F2",
+    backgroundColor: "#fff",
     borderRadius: 10,
     paddingHorizontal: 10,
+    borderWidth: 1,
+    borderColor: "#ccc",
   },
   numberText: { fontSize: 18, fontWeight: "bold", marginRight: 8 },
   arrowContainer: { justifyContent: "center" },
-  inputBox: {
-    backgroundColor: "#F2F2F2",
-    borderRadius: 10,
-    padding: 14,
-    marginBottom: 15,
-    fontSize: 16,
-  },
-  viewButton: {
-    backgroundColor: "#2C4A7A",
-    padding: 15,
-    borderRadius: 25,
-    alignItems: "center",
-    marginTop: 10,
-  },
-  viewText: { color: "#fff", fontSize: 16, fontWeight: "bold" },
   bottomNav: {
     flexDirection: "row",
     justifyContent: "space-around",
